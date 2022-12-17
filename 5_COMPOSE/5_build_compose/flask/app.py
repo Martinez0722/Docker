@@ -3,14 +3,15 @@ from flask import request, json, jsonify
 import requests
 import flask_mysqldb
 from flask_mysqldb import MySQL
+from psycopg2 import cursor
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
-app.config['MYSQL_HOST'] = 'mysql_api_container'
+app.config['MYSQL_HOST'] = 'db'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] =''
-app.config['MYSQL_DB'] = 'flaskdocker'
+app.config['MYSQL_DB'] = 'flaskdb'
 mysql = MySQL(app)
 
 @app.route("/", methods=["GET"])
@@ -28,7 +29,7 @@ def inserthost():
     mysql.connection.commit()
     cur.close()
 
-    return username
+    return "usuario inserido:" + username
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True, port="5000")

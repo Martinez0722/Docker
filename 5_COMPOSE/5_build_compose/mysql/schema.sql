@@ -1,5 +1,5 @@
 CREATE DATABASE flaskdocker;
-USE flaskdocker;
+USE flaskdb;
 
 CREATE TABLE `flaskdocker`.`users`(
     `id` INT NOT NULL AUTO_INCREMENT,
